@@ -31,6 +31,8 @@ memory.limit(size=30000)
 #Read CEH Land Cover Map raster of the AOI
 
 hab<-raster('spatialdata/SSLC 25m.tif')
+hab[hab>21] <- NA
+
 plot(hab)
 
 # Evaluate Condatis condition ---------------------------------------------
