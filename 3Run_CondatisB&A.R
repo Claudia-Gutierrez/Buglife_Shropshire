@@ -105,12 +105,15 @@ ggplot(conductance.long, aes(disp_dist, log10(speed), colour = Variable)) +
 
 
 #plot log dispersal distance vs log speed
-ggplot(conductance.long, aes(log10(disp_dist), log10(speed), colour = Variable))+ 
+pdf("conductance/plotSN.pdf")
+plot<-ggplot(conductance.long, aes(log10(disp_dist), log10(speed), colour = Variable))+ 
   geom_point(size = 5)+
   labs(x = 'log (Dispersal distance) [km]', y='log(Speed)' )+
   scale_x_continuous(breaks=c(-1.5,-1,-0.5,0,0.5))+
   theme(text = element_text(size = 30), legend.position="right",
         legend.title=element_blank())
+dev.off()
+
 
 # Estimate change of speed due to intervention ----------------------------
 
@@ -122,4 +125,4 @@ change<-bl_area-nobl_area
 perc_change<-(change/nobl_area)*100
 perc_change
 
-
+write.csv(perc_change,"conductance/test_3kchange.csv")
