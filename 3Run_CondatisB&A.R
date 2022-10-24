@@ -27,17 +27,17 @@ library(ggplot2)
 library(maptools)
 library(scales)
 library(DescTools)
-memory.limit(size=300000)
+#memory.limit(size=300000)
 
 # Run Condatis with dispersal distance iteration --------------------------
 
 #Raster of AOI without B-line project
-hab<- raster("spatialdata/habitat.tif") 
+hab<- raster("spatialdata/habitat.tif")
 st<- raster("spatialdata/stSN.tif")
 R<-1000
 
-#Range defined between 25m and maximum distance between the source and target[Dispersal
-disper <-c(10^seq(-1.6,0.6,0.2))
+#Range defined between 10m and maximum distance between the source and target[Dispersal
+disper <-c(10^seq(-1.8,0.5,0.1))
 
 test_result<-data.frame()
 for(i in disper) {

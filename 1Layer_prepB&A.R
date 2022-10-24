@@ -23,14 +23,14 @@ library(ggplot2)
 library(rgeos)
 library(dplyr)
 
-memory.limit(size=30000)
+#memory.limit(size=30000)
 
 
 # Read habitat raster -----------------------------------------------------
 
 #Read CEH Land Cover Map raster of the AOI
 
-hab<-raster('spatialdata/SSLC 25m.tif')
+hab<-raster('spatialdata/SSLC.tif')
 hab[hab>21] <- NA
 
 plot(hab)
@@ -44,7 +44,7 @@ plot(hab1)
 
 habcount<-cellStats(hab1, 'sum')
 {
-  if (habcount>60000)
+  if (habcount>600000)
     stop("too many cells")
   
   # Define habitat quality values in raster
@@ -82,7 +82,7 @@ hab_blcount<-raster:::.ifel(hab_bl> 0, 1,hab_bl)
 plot(hab_blcount)
 
 {hab_blcount<-cellStats(hab_bl, 'sum')
-  if (hab_blcount>60000)
+  if (hab_blcount>6000000)
     stop("too many cells")
   
   #save habitat layer with including B-lin projects  
@@ -109,6 +109,8 @@ st1
 
 crs (st1)<-"EPSG:27700"
 writeRaster(st1,"spatialdata/stSN.tif", overwrite=TRUE)
+
+
 
 # movement NORTH TO SOUTH
 st2 <- raster(hab1)  
