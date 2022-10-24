@@ -30,7 +30,7 @@ library(dplyr)
 
 #Read CEH Land Cover Map raster of the AOI
 
-hab<-raster('spatialdata/SSLC.tif')
+hab<-raster('spatialdata/SSLC20.tif')
 hab[hab>21] <- NA
 
 plot(hab)
@@ -44,7 +44,7 @@ plot(hab1)
 
 habcount<-cellStats(hab1, 'sum')
 {
-  if (habcount>600000)
+  if (habcount>60000)
     stop("too many cells")
   
   # Define habitat quality values in raster
@@ -82,7 +82,7 @@ hab_blcount<-raster:::.ifel(hab_bl> 0, 1,hab_bl)
 plot(hab_blcount)
 
 {hab_blcount<-cellStats(hab_bl, 'sum')
-  if (hab_blcount>6000000)
+  if (hab_blcount>60000)
     stop("too many cells")
   
   #save habitat layer with including B-lin projects  

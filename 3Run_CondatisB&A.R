@@ -37,7 +37,7 @@ st<- raster("spatialdata/stSN.tif")
 R<-1000
 
 #Range defined between 10m and maximum distance between the source and target[Dispersal
-disper <-c(10^seq(-1.8,0.5,0.1))
+disper <-c(10^seq(-1.7,0.5,0.1))
 
 test_result<-data.frame()
 for(i in disper) {
